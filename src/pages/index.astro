@@ -1,6 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import DayChallenge from "../components/DayChallenge.tsx";
+import Nav from "../components/Nav.astro";
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
+
+const articles = await Astro.glob("./articles/*.mdx");
+const nonDraftArticles = articles
+  .filter((article) => !article.frontmatter.draft)
+  .sort((a, b) =>
+    a.frontmatter.publishedOn > b.frontmatter.publishedOn
+      ? -1
+      : a.frontmatter.publishedOn < b.frontmatter.publishedOn
+      ? 1
+      : 0
+  );
 ---
 
 <Layout title="Maxim McNair" desc="Product Engineer">
@@ -10,10 +23,7 @@ import DayChallenge from "../components/DayChallenge.tsx";
   <link rel="preload" href="/img/work_boilerroom.jpg" as="image" />
   <link rel="preload" href="/img/work_inmysize.jpg" as="image" />
 
-  <nav class="nav">
-    <h1 class="nav-name">Maxim McNair</h1>
-    <span class="nav-title">Product Engineer</span>
-  </nav>
+  <Nav />
 
   <main>
     <section class="intro">
@@ -152,6 +162,22 @@ import DayChallenge from "../components/DayChallenge.tsx";
       </p>
     </section>
 
+    <section class="articles">
+      <span class="articles-sub">Articles</span>
+      {
+        nonDraftArticles.map(
+          ({ frontmatter: { title, tags, publishedOn }, url }) => (
+            <a class="article" href={url}>
+              <h3 class="article-title">{title}</h3>
+              <strong class="article-desc">
+                {format(new Date(publishedOn), "do MMM yyyy")}
+              </strong>
+            </a>
+          )
+        )
+      }
+    </section>
+
     <div class="cursor"></div>
   </main>
 </Layout>
@@ -178,32 +204,6 @@ import DayChallenge from "../components/DayChallenge.tsx";
     padding: 0px 10px;
   }
 
-  .nav {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    width: 160px;
-    padding: 10px;
-    text-align: center;
-    background: rgba(13, 13, 13, 0.05);
-    backdrop-filter: blur(30px);
-    transform: translate3d(-80px, 0px, 0px);
-    border-radius: 3px;
-    z-index: 2;
-  }
-
-  .nav-name {
-    margin: 0px;
-    color: var(--color-white);
-    font-size: var(--type-small);
-  }
-
-  .nav-title {
-    /* color: var(--color-grey); */
-    color: rgba(350, 350, 350, 0.5);
-    font-size: var(--type-small);
-  }
-
   .intro {
     position: relative;
     margin-top: 80px;
@@ -212,14 +212,16 @@ import DayChallenge from "../components/DayChallenge.tsx";
 
   .intro-desc {
     margin-bottom: 0px;
-    font-family: var(--type-laica);
-    font-size: var(--type-h4);
+    font-family: var(--typeface-laica);
+    font-size: var(--typesize-h4);
+    line-height: var(--type-lineheight-h4);
     max-width: 600px;
   }
 
   @media (min-width: 550px) {
     .intro-desc {
-      font-size: var(--type-h3);
+      font-size: var(--typesize-h3);
+      line-height: var(--type-lineheight-h3);
     }
   }
 
@@ -259,7 +261,7 @@ import DayChallenge from "../components/DayChallenge.tsx";
     left: -5px;
     display: block;
     transform: rotate(90deg);
-    font-size: var(--type-small);
+    font-size: var(--typesize-small);
     transform-origin: top left;
     color: var(--color-grey);
     user-select: none;
@@ -268,8 +270,9 @@ import DayChallenge from "../components/DayChallenge.tsx";
   .previous-work-names {
     margin-top: -8px;
     position: relative;
-    font-size: var(--type-h3);
-    font-family: var(--type-title);
+    font-size: var(--typesize-h3);
+    font-family: var(--typeface-title);
+    line-height: var(--type-lineheight-h3);
     color: var(--color-grey-light);
   }
 
@@ -283,6 +286,54 @@ import DayChallenge from "../components/DayChallenge.tsx";
     color: var(--color-black);
     position: relative;
     z-index: 3;
+  }
+
+  .articles {
+    position: relative;
+    margin-top: 200px;
+  }
+
+  .articles-sub {
+    position: absolute;
+    text-transform: uppercase;
+    top: 10px;
+    left: -5px;
+    display: block;
+    transform: rotate(90deg);
+    font-size: var(--typesize-small);
+    transform-origin: top left;
+    color: var(--color-grey);
+    user-select: none;
+  }
+
+  .article {
+    display: block;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+  }
+
+  .article:hover {
+    margin-left: 10px;
+  }
+
+  .article-title {
+    font-size: var(--typesize-h3);
+    line-height: var(--type-lineheight-h3);
+    font-weight: 500;
+    font-family: var(--typeface-title);
+    color: var(--color-grey-light);
+    margin: 0px;
+    transition: all 0.3s;
+  }
+
+  .article:hover .article-title {
+    color: var(--color-white);
+  }
+
+  .article-desc {
+    color: var(--color-grey);
+    font-size: var(--typesize-small);
+    line-height: var(--type-lineheight-small);
   }
 
   .cursor {
@@ -315,7 +366,6 @@ import DayChallenge from "../components/DayChallenge.tsx";
 <script>
   class Cursor {
     constructor(el) {
-      console.log(el);
       this.DOM = { el: el };
       this.img = {
         src: null,

@@ -5,11 +5,6 @@ export interface Props {
 }
 
 const { title, desc } = Astro.props;
-
-// <nav>
-//   <a href="/">Home</a>
-//   <a href="/tool/copy-paste-mathjax">tool</a>
-// </nav>
 ---
 
 <!DOCTYPE html>
@@ -71,19 +66,28 @@ const { title, desc } = Astro.props;
     --color-text: var(--color-white);
     --color-bg: var(--color-black);
 
-    --type-h1: 2.488rem;
-    --type-h2: 2.074rem;
-    --type-h3: 1.728rem;
-    --type-h4: 1.44rem;
-    --type-h5: 1.2rem;
-    --type-body: 1rem;
-    --type-small: 0.8rem;
+    --typesize-h1: 2.488rem;
+    --typesize-h2: 2.074rem;
+    --typesize-h3: 1.728rem;
+    --typesize-h4: 1.44rem;
+    --typesize-h5: 1.2rem;
+    --typesize-body: 1rem;
+    --typesize-small: 0.8rem;
 
-    --type-inter: "Inter";
-    --type-laica: "Laicab";
+    --typeface-inter: "Inter";
+    --typeface-laica: "Laicab";
 
-    --type-title: var(--type-laica);
-    --type-body: var(--type-inter);
+    --typeface-title: var(--typeface-laica);
+    --typeface-body: var(--typeface-inter);
+
+    --type-lineheight-h1: calc(var(--typesize-h1) * 1.5);
+    --type-lineheight-h2: calc(var(--typesize-h2) * 1.5);
+    --type-lineheight-h3: calc(var(--typesize-h3) * 1.5);
+    --type-lineheight-h4: calc(var(--typesize-h4) * 1.5);
+    --type-lineheight-h5: calc(var(--typesize-h5) * 1.5);
+    --type-lineheight-h6: calc(var(--typesize-h6) * 1.5);
+    --type-lineheight-body: calc(var(--typesize-body) * 1.5);
+    --type-lineheight-small: calc(var(--typesize-small) * 1.5);
   }
 
   html,
@@ -115,6 +119,12 @@ const { title, desc } = Astro.props;
     text-decoration: none;
   }
 
+  img,
+  video {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .hide {
     display: none;
   }
@@ -122,6 +132,7 @@ const { title, desc } = Astro.props;
   /* typography */
   html {
     font-size: 112.5%; /* 18px */
+    line-height: calc(var(--typesize-body) * 1.8);
     font-family: "Inter";
   }
 
@@ -131,40 +142,75 @@ const { title, desc } = Astro.props;
   h4,
   h5 {
     margin: 3rem 0 1.38rem;
+    font-family: var(--typeface-title);
+    font-weight: 500;
   }
 
   h1,
   .h1 {
     margin-top: 0;
-    font-size: var(--type-h1);
+    font-size: var(--typesize-h1);
+    line-height: calc(var(--typesize-h1) * 1.8);
   }
 
   h2,
   .h2 {
-    font-size: var(--type-h2);
+    font-size: var(--typesize-h2);
+    line-height: calc(var(--typesize-h2) * 1.8);
   }
 
   h3,
   .h3 {
-    font-size: var(--type-h3);
+    font-size: var(--typesize-h3);
+    line-height: var(--type-lineheight-h3);
   }
 
   h4,
   .h4 {
-    font-size: var(--type-h4);
+    font-size: var(--typesize-h4);
+    line-height: calc(var(--typesize-h4) * 1.8);
   }
 
   h5,
   .h5 {
-    font-size: var(--type-h5);
+    font-size: var(--typesize-h5);
+    line-height: calc(var(--typesize-h5) * 1.8);
+  }
+
+  p {
+    line-height: calc(var(--typesize-body) * 1.8);
   }
 
   small,
   .small {
-    font-size: var(--type-small);
+    font-size: var(--typesize-small);
   }
 
   strong {
     color: var(--color-gold);
+  }
+
+  pre {
+    padding: 10px;
+  }
+
+  code,
+  .type_code {
+    font-family: "Source Code Pro", monospace;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-black);
+    -webkit-appearance: none;
+  }
+
+  ::-webkit-scrollbar-track-piece {
+    background-color: var(--color-black);
+  }
+
+  ::-webkit-scrollbar-thumb:vertical {
+    background-color: var(--color-grey);
   }
 </style>
