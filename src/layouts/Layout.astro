@@ -21,7 +21,9 @@ const { title, desc } = Astro.props;
     <slot />
   </body>
 </html>
+
 <style is:global>
+  /* Inter */
   @font-face {
     font-family: "Inter";
     font-style: normal;
@@ -52,11 +54,29 @@ const { title, desc } = Astro.props;
     font-style: italic;
     font-weight: normal;
   }
+  /* Space Mono */
+  @font-face {
+    font-family: "Space Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Space Mono/SpaceMono-Regular.woff2") format("woff2"),
+      url("/fonts/Space Mono/SpaceMono-Regular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Space Mono";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/Space Mono/SpaceMono-Bold.woff2") format("woff2"),
+      url("/fonts/Space Mono/SpaceMono-Bold.woff") format("woff");
+  }
 
   :root {
     --color-white: #f7f7f7;
     --color-grey: #4d4d4d;
     --color-grey-light: #797979;
+    --color-grey-lighter: #bababa;
     --color-grey-dark: #1d1f20;
     --color-black: #0d0d0d;
     --color-gold: #d09f69;
@@ -74,11 +94,16 @@ const { title, desc } = Astro.props;
     --typesize-body: 1rem;
     --typesize-small: 0.8rem;
 
+    --typeweight-thin: 100;
+    --typeweight-medium: 400;
+    --typeweight-bold: 600;
+
     --typeface-inter: "Inter";
+    --typeface-spacemono: "Space Mono";
     --typeface-laica: "Laicab";
 
     --typeface-title: var(--typeface-laica);
-    --typeface-body: var(--typeface-inter);
+    --typeface-body: var(--type-inter);
 
     --type-lineheight-h1: calc(var(--typesize-h1) * 1.5);
     --type-lineheight-h2: calc(var(--typesize-h2) * 1.5);
@@ -114,9 +139,16 @@ const { title, desc } = Astro.props;
     color: var(--color-bg);
   }
 
-  a {
-    color: inherit;
+  a,
+  a:visited {
+    color: var(--color-gold);
+    font-weight: 600;
     text-decoration: none;
+    cursor: pointer;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 
   img,
@@ -212,5 +244,50 @@ const { title, desc } = Astro.props;
 
   ::-webkit-scrollbar-thumb:vertical {
     background-color: var(--color-grey);
+  }
+
+  select {
+    appearance: none;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: 2px solid var(--color-white);
+    padding: 10px 15px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: var(--typesize-body);
+  }
+
+  select::after {
+    content: " ";
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    display: block;
+    z-index: 3;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+  button {
+    appearance: none;
+    border: none;
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-grey-light);
+    color: var(--color-white);
+    font-size: var(--typesize-small);
+    font-weight: var(--typeweight-bold);
+    text-transform: uppercase;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  button:hover {
+    border-color: var(--color-white);
+    color: var(--color-white);
+  }
+  button:active {
+    transform: translate(0px, 1px);
   }
 </style>

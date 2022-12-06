@@ -1,0 +1,610 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import BuiltBy from "../../components/BuiltBy.astro";
+import OpenTypePairs from "../../components/tools/OpenTypePairs.tsx";
+import OpenTypeScale from "../../components/tools/OpenTypeScale.tsx";
+import OpenTypePreview from "../../components/tools/OpenTypePreview.tsx";
+import OpenTypeWeights from "../../components/tools/OpenTypeWeight.tsx";
+import OpenTypeCSS from "../../components/tools/OpenTypeCSS.tsx";
+---
+
+<Layout
+  title="OpenSource type system | Maxim McNair"
+  desc="Build a type system with opensource typefaces"
+>
+  <main>
+    <section>
+      <h1 class="opentype-title">OSS Type System</h1>
+      <h3 class="opentype-subtitle">
+        Build a Type System with Open Source Typefaces
+      </h3>
+    </section>
+
+    <section>
+      <h3>Why use Open Source Typefaces?</h3>
+      <p>
+        This site focuses on open source typefaces that you can host yourself
+        and don't need to inject a script you don't control. They're a great
+        start for your next open source project.
+      </p>
+      <p>
+        The CSS created will import all these typefaces with consistent font
+        style, so 600 will be bold for each typeface.
+      </p>
+      <p>
+        There are a number of type scale tools around the web. Notable Jeremy
+        Church's <a href="https://type-scale.com/" target="_blank">Type Scale</a
+        > and Tim Brown’s
+        <a href="https://www.modularscale.com/" target="_blank">Modular Scale</a
+        >. However these focus on just the type scale (type sizes) and not a
+        cohesive system with spacing and type pairs.
+      </p>
+      <p>
+        If you have any comments or suggestions you can either tweet me at <a
+          href="https://twitter.com/maximmcnair"
+          target="_blank">@maximmcnair</a
+        > or create an <a>issue</a>/<a>PR</a> on Github.
+      </p>
+    </section>
+
+    <section>
+      <h3>Typefaces Options & Weights</h3>
+      <p>
+        It's a great time for open source typefaces, as many big players such as
+        Adobe, IBM and Github have created and open sourced typefaces anyone can
+        use.
+      </p>
+      <p>
+        This selection of typefaces are intended for use in interfaces and the
+        surrounding online documentation, rather than for marketing.
+      </p>
+      <p>
+        We use a subset of the weights these typefaces have, sticking to just <em
+          >Thin</em
+        >, <em>Medium</em> and <em>Bold</em>. Take a look at their source code
+        to play around to explored their additional weights.
+      </p>
+      <p>Click on the weights below each typeface to view them.</p>
+      <div class="typeface-options">
+        <OpenTypeWeights client:load />
+      </div>
+    </section>
+
+    <section>
+      <h3>Typefaces pairs</h3>
+      <p>
+        Here are a number of type pairs to start with. You can create your own
+        by clicking the settings button (you've need javascript enable for
+        this).
+      </p>
+      <p>
+        We use a safe default by using seperate typefaces for <strong
+          >title</strong
+        > and <strong>body</strong> styles.
+      </p>
+      <OpenTypePairs client:load />
+    </section>
+
+    <section>
+      <h3>Type scale</h3>
+      <p>
+        Built upon the scales set out in Robert Bringhurst's <a
+          href="https://en.wikipedia.org/wiki/The_Elements_of_Typographic_Style"
+          >The Elements of Typographic Style</a
+        > (turn to p45 & p147 if you have this classic to hand).
+      </p>
+
+      <OpenTypeScale client:load />
+    </section>
+
+    <section>
+      <h3>Preview</h3>
+      <OpenTypePreview client:load />
+    </section>
+
+    <section>
+      <OpenTypeCSS client:load />
+    </section>
+  </main>
+
+  <BuiltBy />
+</Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    /* justify-content: center; */
+    min-height: 100vh;
+    padding-bottom: 100px;
+  }
+
+  main section {
+    max-width: 800px;
+    width: 100%;
+    padding: 0px 10px;
+    margin-top: 50px;
+  }
+
+  main section p {
+    color: var(--color-grey-lighter);
+  }
+
+  .opentype-title {
+    text-align: center;
+    margin: 0px;
+  }
+  .opentype-subtitle {
+    text-align: center;
+    font-family: var(--type-body);
+    font-size: var(--typesize-body);
+    line-height: var(--type-lineheight-body);
+    margin: 0px;
+  }
+
+  .typeface-options {
+    margin-top: 60px;
+    display: grid;
+  }
+
+  @media (min-width: 700px) {
+    .typeface-options {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+<style is:global>
+  /* typefaces */
+  .typeface-inter {
+    font-family: "Inter";
+  }
+  .typeface-hack {
+    font-family: "Hack";
+  }
+  .typeface-leaguemono {
+    font-family: "League Mono";
+  }
+  .typeface-leaguegothic {
+    font-family: "League Gothic";
+  }
+  .typeface-plexmono {
+    font-family: "Plex Mono";
+  }
+  .typeface-plexsans {
+    font-family: "Plex Sans";
+  }
+  .typeface-plexserif {
+    font-family: "Plex Serif";
+  }
+  .typeface-sourcecodepro {
+    font-family: "Source Code Pro";
+  }
+  .typeface-sourcesans {
+    font-family: "Source Sans";
+  }
+  .typeface-sourceserif {
+    font-family: "Source Serif";
+  }
+  .typeface-spacemono {
+    font-family: "Space Mono";
+  }
+  .typeface-hubotsans {
+    font-family: "Hubot Sans";
+  }
+  .typeface-monasans {
+    font-family: "Mona Sans";
+  }
+  /* Inter */
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url("/fonts/Inter Web/Inter-Thin.woff2?v=3.19") format("woff2"),
+      url("/fonts/Inter Web/Inter-Thin.woff?v=3.19") format("woff");
+  }
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Inter Web/Inter-Regular.woff2?v=3.19") format("woff2"),
+      url("/fonts/Inter Web/Inter-Regular.woff?v=3.19") format("woff");
+  }
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/Inter Web/Inter-Bold.woff2?v=3.19") format("woff2"),
+      url("/fonts/Inter Web/Inter-Bold.woff?v=3.19") format("woff");
+  }
+  /* Hack */
+  /* @font-face { */
+  /*   font-family: "Hack"; */
+  /*   font-style: normal; */
+  /*   font-weight: 400; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/Hack/hack-regular.woff2?v=3.19") format("woff2"), */
+  /*     url("/fonts/Hack/hack-regular.woff?v=3.19") format("woff"); */
+  /* } */
+  /* @font-face { */
+  /*   font-family: "Hack"; */
+  /*   font-style: normal; */
+  /*   font-weight: 600; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/Hack/hack-bold.woff2?v=3.19") format("woff2"), */
+  /*     url("/fonts/Hack/hack-bold.woff?v=3.19") format("woff"); */
+  /* } */
+  /* League Gothic */
+  /* @font-face { */
+  /*   font-family: "League Gothic"; */
+  /*   font-style: normal; */
+  /*   font-weight: 400; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/League Gothic/LeagueGothic-Regular.woff2?v=3.19") */
+  /*       format("woff2"), */
+  /*     url("/fonts/League Gothic/LeagueGothic-Regular.woff?v=3.19") */
+  /*       format("woff"); */
+  /* } */
+  /* League Mono */
+  /* @font-face { */
+  /*   font-family: "League Mono"; */
+  /*   font-style: normal; */
+  /*   font-weight: 100; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/League Mono/LeagueMono-Thin.woff2?v=3.19") format("woff2"), */
+  /*     url("/fonts/League Mono/LeagueMono-Thin.woff?v=3.19") format("woff"); */
+  /* } */
+  /* @font-face { */
+  /*   font-family: "League Mono"; */
+  /*   font-style: normal; */
+  /*   font-weight: 400; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/League Mono/LeagueMono-Medium.woff2") format("woff2"), */
+  /*     url("/fonts/League Mono/LeagueMono-Medium.woff") format("woff"); */
+  /* } */
+  /* @font-face { */
+  /*   font-family: "League Mono"; */
+  /*   font-style: normal; */
+  /*   font-weight: 600; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/League Mono/LeagueMono-Bold.woff2") format("woff2"), */
+  /*     url("/fonts/League Mono/LeagueMono-Bold.woff") format("woff"); */
+  /* } */
+  /* Plex Sans */
+  @font-face {
+    font-family: "Plex Sans";
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url("/fonts/Plex Sans/IBMPlexSans-Thin.woff2") format("woff2"),
+      url("/fonts/Plex Sans/IBMPlexSans-Thin.woff?") format("woff");
+  }
+  @font-face {
+    font-family: "Plex Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Plex Sans/IBMPlexSans-Medium.woff2") format("woff2"),
+      url("/fonts/Plex Sans/IBMPlexSans-Medium.woff?") format("woff");
+  }
+  @font-face {
+    font-family: "Plex Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/Plex Sans/IBMPlexSans-Bold.woff2") format("woff2"),
+      url("/fonts/Plex Sans/IBMPlexSans-Bold.woff?") format("woff");
+  }
+  /* Plex Serif */
+  @font-face {
+    font-family: "Plex Serif";
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url("/fonts/Plex Serif/IBMPlexSerif-Thin.woff2") format("woff2"),
+      url("/fonts/Plex Serif/IBMPlexSerif-Thin.woff?") format("woff");
+  }
+  @font-face {
+    font-family: "Plex Serif";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Plex Serif/IBMPlexSerif-Medium.woff2") format("woff2"),
+      url("/fonts/Plex Serif/IBMPlexSerif-Medium.woff?") format("woff");
+  }
+  @font-face {
+    font-family: "Plex Serif";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/Plex Serif/IBMPlexSerif-Bold.woff2") format("woff2"),
+      url("/fonts/Plex Serif/IBMPlexSerif-Bold.woff?") format("woff");
+  }
+  /* Plex Mono */
+  /* @font-face { */
+  /*   font-family: "Plex Mono"; */
+  /*   font-style: normal; */
+  /*   font-weight: 100; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/Plex Mono/IBMPlexMono-Thin.woff2") format("woff2"), */
+  /*     url("/fonts/Plex Mono/IBMPlexMono-Thin.woff") format("woff"); */
+  /* } */
+  /* @font-face { */
+  /*   font-family: "Plex Mono"; */
+  /*   font-style: normal; */
+  /*   font-weight: 400; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/Plex Mono/IBMPlexMono-Medium.woff2") format("woff2"), */
+  /*     url("/fonts/Plex Mono/IBMPlexMono-Medium.woff?") format("woff"); */
+  /* } */
+  /* @font-face { */
+  /*   font-family: "Plex Mono"; */
+  /*   font-style: normal; */
+  /*   font-weight: 600; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/Plex Mono/IBMPlexMono-Bold.woff2") format("woff2"), */
+  /*     url("/fonts/Plex Mono/IBMPlexMono-Bold.woff?") format("woff"); */
+  /* } */
+  /* Source Code Pro */
+  /* @font-face { */
+  /*   font-family: "Source Code Pro"; */
+  /*   font-style: normal; */
+  /*   font-weight: 100; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/Source Code Pro/SourceCodePro-Light.woff2") format("woff2"), */
+  /*     url("/fonts/Source Code Pro/SourceCodePro-Light.woff") format("woff"); */
+  /* } */
+  /* @font-face { */
+  /*   font-family: "Source Code Pro"; */
+  /*   font-style: normal; */
+  /*   font-weight: 400; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/Source Code Pro/SourceCodePro-Medium.woff2") */
+  /*       format("woff2"), */
+  /*     url("/fonts/Source Code Pro/SourceCodePro-Medium.woff") format("woff"); */
+  /* } */
+  /* @font-face { */
+  /*   font-family: "Source Code Pro"; */
+  /*   font-style: normal; */
+  /*   font-weight: 600; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/Source Code Pro/SourceCodePro-Bold.woff2") format("woff2"), */
+  /*     url("/fonts/Source Code Pro/SourceCodePro-Bold.woff") format("woff"); */
+  /* } */
+  /* Source Sans */
+  @font-face {
+    font-family: "Source Sans";
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url("/fonts/Source Sans/SourceSans3-Light.woff2") format("woff2"),
+      url("/fonts/Source Sans/SourceSans3-Light.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Source Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Source Sans/SourceSans3-Regular.woff2") format("woff2"),
+      url("/fonts/Source Sans/SourceSans3-Regular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Source Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/Source Sans/SourceSans3-Bold.woff2") format("woff2"),
+      url("/fonts/Source Sans/SourceSans3-Bold.woff") format("woff");
+  }
+  /* Source Serif */
+  @font-face {
+    font-family: "Source Serif";
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url("/fonts/Source Serif/SourceSerif4-Light.woff2") format("woff2"),
+      url("/fonts/Source Serif/SourceSerif4-Light.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Source Serif";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Source Serif/SourceSerif4-Regular.woff2") format("woff2"),
+      url("/fonts/Source Serif/SourceSerif4-Regular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Source Serif";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/Source Serif/SourceSerif4-Bold.woff2") format("woff2"),
+      url("/fonts/Source Serif/SourceSerif4-Bold.woff") format("woff");
+  }
+  /* Space Mono */
+  @font-face {
+    font-family: "Space Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Space Mono/SpaceMono-Regular.woff2") format("woff2"),
+      url("/fonts/Space Mono/SpaceMono-Regular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Space Mono";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/Space Mono/SpaceMono-Bold.woff2") format("woff2"),
+      url("/fonts/Space Mono/SpaceMono-Bold.woff") format("woff");
+  }
+  /* Hubot Sans */
+  /* @font-face { */
+  /*   font-family: "Hubot Sans"; */
+  /*   font-style: normal; */
+  /*   font-weight: 400; */
+  /*   font-display: swap; */
+  /*   src: url("/fonts/Hubot Sans/Hubot-Sans.woff2") format("woff2"), */
+  /*     url("/fonts/Hubot Sans/Hubot-Sans.woff") format("woff"); */
+  /* } */
+  /* Mona Sans */
+  @font-face {
+    font-family: "Mona Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Mona Sans/Mona-Sans.woff2") format("woff2"),
+      url("/fonts/Mona Sans/Mona-Sans.woff") format("woff");
+  }
+
+  :root {
+    --typeface-title: var(--typeface-spacemono);
+  }
+
+  /* Pairs */
+  .typeface-pairs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  @media (min-width: 700px) {
+    .typeface-pairs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .typeface-pair {
+    border: 2px solid var(--color-grey-dark);
+    /* background-color: var(--color-grey-dark); */
+    padding: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .typeface-pair[data-active="true"] {
+    border-color: var(--color-white);
+  }
+  .typeface-pair-name {
+    display: block;
+    line-height: var(--typesize-body);
+    color: var(--color-grey-light);
+    margin-top: 5px;
+    margin-bottom: 16px;
+  }
+  .typeface-preview-title {
+    display: block;
+    font-size: var(--typesize-h3);
+    margin-bottom: 10px;
+  }
+  .typeface-preview-body {
+    display: block;
+    font-size: var(--typesize-body);
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    /* height: 100px; */
+  }
+
+  /* v2 */
+  .typeface-pair-options-wrapper {
+    overflow: hidden;
+  }
+
+  .typeface-pair-options {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: scroll;
+  }
+
+  .typeface-pair-option {
+    font-size: 20px;
+    max-width: 200px;
+    /* height: 80px; */
+    border: 2px solid var(--color-grey-dark);
+    padding: 3px 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-wrap: no-wrap;
+    display: flex;
+    align-items: center;
+    /* ellipsis */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* scale */
+  .scale-picker {
+    position: relative;
+    z-index: 2;
+  }
+  .scale-preview {
+    margin-top: 25px;
+  }
+  .scale-preview-type {
+    display: block;
+  }
+  .scale-preview-type small {
+    color: var(--color-grey-light);
+  }
+
+  /* Options & Weights */
+  .typeface-option {
+    margin-bottom: 40px;
+  }
+  .typeface-option-title {
+    display: block;
+    font-size: 40px;
+    margin-bottom: 5px;
+  }
+  .typeface-option-title[data-weight="thin"] {
+    font-weight: 100;
+  }
+  .typeface-option-title[data-weight="medium"] {
+    font-weight: 400;
+  }
+  .typeface-option-title[data-weight="bold"] {
+    font-weight: 600;
+  }
+  .typeface-option-source {
+    display: none;
+  }
+  .typeface-option-foundery {
+    display: block;
+    color: var(--color-grey-light);
+  }
+  .typeface-option-type {
+    display: none;
+  }
+  .typeface-option-weights {
+    margin-top: 10px;
+  }
+  .typeface-option-weight {
+    cursor: pointer;
+    background: var(--color-grey-dark);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    border: 1px solid var(--color-grey-dark);
+    color: var(--color-grey-light);
+    transition: all 0.3s;
+  }
+  .typeface-option-weight:hover {
+    color: var(--color-white);
+  }
+  .typeface-option-weight[data-active="true"] {
+    /* border-color: var(--color-grey); */
+    color: var(--color-white);
+  }
+</style>

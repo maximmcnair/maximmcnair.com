@@ -192,6 +192,7 @@ const nonDraftArticles = articles
     /* justify-content: center; */
     min-height: 100vh;
     padding-bottom: 100px;
+    overflow: hidden;
   }
 
   .page-title {
@@ -212,7 +213,7 @@ const nonDraftArticles = articles
 
   .intro-desc {
     margin-bottom: 0px;
-    font-family: var(--typeface-laica);
+    font-family: var(--typeface-title);
     font-size: var(--typesize-h4);
     line-height: var(--type-lineheight-h4);
     max-width: 600px;
@@ -230,7 +231,6 @@ const nonDraftArticles = articles
   }
 
   .social-icons {
-    /* text-align: center; */
     margin-top: 20px;
     margin-bottom: 60px;
     user-select: none;
@@ -238,6 +238,10 @@ const nonDraftArticles = articles
 
   .social-icons a {
     margin: 4px;
+  }
+
+  .social-icons a:hover {
+    text-decoration: none;
   }
 
   .social-icons svg,
@@ -252,19 +256,30 @@ const nonDraftArticles = articles
 
   .previous-work {
     position: relative;
-    margin-top: 350px;
+    margin-top: 150px;
+  }
+  @media (min-width: 550px) {
+    .previous-work {
+      margin-top: 350px;
+    }
   }
 
   .previous-sub {
-    position: absolute;
     text-transform: uppercase;
-    left: -5px;
-    display: block;
-    transform: rotate(90deg);
     font-size: var(--typesize-small);
-    transform-origin: top left;
     color: var(--color-grey);
     user-select: none;
+    margin-bottom: 10px;
+  }
+  @media (min-width: 550px) {
+    .previous-sub {
+      margin-bottom: 0px;
+      position: absolute;
+      left: -5px;
+      display: block;
+      transform: rotate(90deg);
+      transform-origin: top left;
+    }
   }
 
   .previous-work-names {
@@ -294,16 +309,21 @@ const nonDraftArticles = articles
   }
 
   .articles-sub {
-    position: absolute;
     text-transform: uppercase;
-    top: 10px;
-    left: -5px;
     display: block;
-    transform: rotate(90deg);
     font-size: var(--typesize-small);
-    transform-origin: top left;
     color: var(--color-grey);
     user-select: none;
+  }
+
+  @media (min-width: 550px) {
+    .articles-sub {
+      position: absolute;
+      top: 10px;
+      left: -5px;
+      transform: rotate(90deg);
+      transform-origin: top left;
+    }
   }
 
   .article {
@@ -314,6 +334,7 @@ const nonDraftArticles = articles
 
   .article:hover {
     margin-left: 10px;
+    text-decoration: none;
   }
 
   .article-title {
