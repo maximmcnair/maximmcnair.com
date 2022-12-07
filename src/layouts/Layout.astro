@@ -16,6 +16,7 @@ const { title, desc } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={desc || ""} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <slot />
@@ -76,8 +77,9 @@ const { title, desc } = Astro.props;
     --color-white: #f7f7f7;
     --color-grey: #4d4d4d;
     --color-grey-light: #797979;
-    --color-grey-lighter: #bababa;
+    --color-grey-lighter: #cecece;
     --color-grey-dark: #1d1f20;
+    --color-grey-darker: #131515;
     --color-black: #0d0d0d;
     --color-gold: #d09f69;
 
@@ -163,7 +165,8 @@ const { title, desc } = Astro.props;
 
   /* typography */
   html {
-    font-size: 112.5%; /* 18px */
+    /* 18px */
+    font-size: 112.5%;
     line-height: calc(var(--typesize-body) * 1.8);
     font-family: "Inter";
   }
@@ -204,7 +207,8 @@ const { title, desc } = Astro.props;
   }
 
   h5,
-  .h5 {
+  .h5,
+  .p-intro {
     font-size: var(--typesize-h5);
     line-height: calc(var(--typesize-h5) * 1.8);
   }
@@ -251,22 +255,26 @@ const { title, desc } = Astro.props;
     background-color: var(--color-black);
     color: var(--color-white);
     border: 2px solid var(--color-white);
-    padding: 10px 15px;
+    padding: 10px 45px 10px 15px;
     border-radius: 3px;
     font-weight: 600;
     font-size: var(--typesize-body);
   }
 
-  select::after {
+  .select-wrap {
+    position: relative;
+    display: inline-block;
+  }
+  .select-wrap::after {
     content: " ";
-    width: 15px;
-    height: 15px;
-    background-color: white;
+    width: 20px;
+    height: 20px;
+    background-image: url('/chevron-down.svg');
     display: block;
-    z-index: 3;
+    z-index: 99999;
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 12px;
+    right: 14px;
   }
 
   button {
