@@ -20,7 +20,11 @@
   font-family: var(--typeface-body);
   margin-bottom: 10px;
   margin-top: 0px;
-  color: var(--color-grey)
+  color: var(--color-grey-light)
+}
+
+.math-nav span {
+  color: var(--color-grey-light)
 }
 
 .math-search-wrapper {

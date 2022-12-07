@@ -54,6 +54,19 @@ export default function CopyPasteMathJax() {
       <nav className="math-nav">
         <h1>Copy Paste MathJax</h1>
         <h4>Click on an expression to copy to your clipboard</h4>
+        <span>
+          Make suggestions by tweet{" "}
+          <a href="https://twitter.com/maximmcnair" target="_blank">
+            @maximmcnair
+          </a>{" "}
+          or PR{" "}
+          <a
+            href="https://github.com/maximmcnair/maximmcnair.com/pulls"
+            target="_blank"
+          >
+            on Github.
+          </a>
+        </span>
       </nav>
       <div className="math-container">
         <div className="math-search-wrapper">
