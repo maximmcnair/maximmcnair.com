@@ -1,6 +1,60 @@
 import { useState } from "react";
 import { useTypeSystem } from "./typesystem";
 
+const typefaceWeights = {
+  Inter: [
+    [100, "Inter-Thin"],
+    [400, "Inter-Regular"],
+    [600, "Inter-Bold"],
+  ],
+  "Plex Sans": [
+    [100, "IBMPlexSans-Thin"],
+    [400, "IBMPlexSans-Medium"],
+    [600, "IBMPlexSans-Bold"],
+  ],
+  "Plex Serif": [
+    [100, "IBMPlexSerif-Thin"],
+    [400, "IBMPlexSerif-Medium"],
+    [600, "IBMPlexSerif-Bold"],
+  ],
+  "Source Sans": [
+    [100, "SourceSans3-Light"],
+    [400, "SourceSans3-Regular"],
+    [600, "SourceSans3-Bold"],
+  ],
+  "Source Serif": [
+    [100, "SourceSerif4-Light"],
+    [400, "SourceSerif4-Regular"],
+    [600, "SourceSerif4-Bold"],
+  ],
+  "Space Mono": [
+    [400, "SpaceMono-Regular"],
+    [600, "SpaceMono-Bold"],
+  ],
+  "Mona Sans": [[400, "Mona-Sans"]],
+};
+
+function typeFontFaceImports(typeface: string): string {
+  // @ts-ignore
+  const weights = typefaceWeights[typeface];
+
+  if (!weights || weights.lenght === 0) return "";
+
+  return weights
+    .map(
+      (w: any) =>
+        `@font-face {
+  font-family: "${typeface}";
+  font-style: normal;
+  font-weight: ${w[0]};
+  font-display: swap;
+  src: url("/${w[1]}.woff2") format("woff2"),
+    url("/${w[1]}.woff") format("woff");
+}`
+    )
+    .join("\n");
+}
+
 export default function OpenTypeCSS() {
   const [showMsg, setShowMsg] = useState(false);
   const $typeSystem = useTypeSystem();
@@ -9,6 +63,14 @@ export default function OpenTypeCSS() {
 html {
   font-size: 112.5%;
 }
+
+${[$typeSystem.title, $typeSystem.body]
+  .map(
+    (t) => `/* ${t} */
+${typeFontFaceImports(t)}
+`
+  )
+  .join("\n")}
 
 :root {
   /* Typefaces */
@@ -118,7 +180,7 @@ small, .type-small {
         ].map((t) => {
           if ([$typeSystem.title, $typeSystem.body].includes(t)) {
             return (
-              <div>
+              <div key={t}>
                 <a href={`/opentype/${t}.zip`} target="_blank">
                   {t} download
                 </a>
