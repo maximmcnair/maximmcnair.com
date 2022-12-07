@@ -16,7 +16,7 @@ const { title, desc } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={desc || ""} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <slot />
@@ -107,14 +107,14 @@ const { title, desc } = Astro.props;
     --typeface-title: var(--typeface-laica);
     --typeface-body: var(--type-inter);
 
-    --type-lineheight-h1: calc(var(--typesize-h1) * 1.5);
-    --type-lineheight-h2: calc(var(--typesize-h2) * 1.5);
-    --type-lineheight-h3: calc(var(--typesize-h3) * 1.5);
-    --type-lineheight-h4: calc(var(--typesize-h4) * 1.5);
-    --type-lineheight-h5: calc(var(--typesize-h5) * 1.5);
-    --type-lineheight-h6: calc(var(--typesize-h6) * 1.5);
-    --type-lineheight-body: calc(var(--typesize-body) * 1.5);
-    --type-lineheight-small: calc(var(--typesize-small) * 1.5);
+    --type-lineheight-h1: 1.5;
+    --type-lineheight-h2: 1.5;
+    --type-lineheight-h3: 1.5;
+    --type-lineheight-h4: 1.5;
+    --type-lineheight-h5: 1.5;
+    --type-lineheight-h6: 1.5;
+    --type-lineheight-body: 1.75;
+    --type-lineheight-small: 1.75;
   }
 
   html,
@@ -167,7 +167,10 @@ const { title, desc } = Astro.props;
   html {
     /* 18px */
     font-size: 112.5%;
-    line-height: calc(var(--typesize-body) * 1.8);
+  }
+
+  body {
+    line-height: 1.5;
     font-family: "Inter";
   }
 
@@ -178,6 +181,7 @@ const { title, desc } = Astro.props;
   h5 {
     margin: 3rem 0 1.38rem;
     font-family: var(--typeface-title);
+    line-height: 1.75;
     font-weight: 500;
   }
 
@@ -185,36 +189,31 @@ const { title, desc } = Astro.props;
   .h1 {
     margin-top: 0;
     font-size: var(--typesize-h1);
-    line-height: calc(var(--typesize-h1) * 1.8);
   }
 
   h2,
   .h2 {
     font-size: var(--typesize-h2);
-    line-height: calc(var(--typesize-h2) * 1.8);
   }
 
   h3,
   .h3 {
     font-size: var(--typesize-h3);
-    line-height: var(--type-lineheight-h3);
   }
 
   h4,
   .h4 {
     font-size: var(--typesize-h4);
-    line-height: calc(var(--typesize-h4) * 1.8);
   }
 
   h5,
   .h5,
   .p-intro {
     font-size: var(--typesize-h5);
-    line-height: calc(var(--typesize-h5) * 1.8);
   }
 
   p {
-    line-height: calc(var(--typesize-body) * 1.8);
+    line-height: 1.75;
   }
 
   small,
@@ -269,7 +268,7 @@ const { title, desc } = Astro.props;
     content: " ";
     width: 20px;
     height: 20px;
-    background-image: url('/chevron-down.svg');
+    background-image: url("/chevron-down.svg");
     display: block;
     z-index: 99999;
     position: absolute;
