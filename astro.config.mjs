@@ -7,11 +7,14 @@ import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
+import svelte from "@astrojs/svelte";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [react(), mdx()],
+  integrations: [react(), mdx(), svelte()],
   markdown: {
     shikiConfig: {
-      theme: "one-dark-pro",
-    },
-  },
+      theme: "one-dark-pro"
+    }
+  }
 });

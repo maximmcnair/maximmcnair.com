@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/mdx": "^0.12.0",
     "@astrojs/react": "^1.2.2",
+    "@astrojs/svelte": "^1.0.2",
     "@nanostores/react": "^0.4.0",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
@@ -22,6 +23,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "styled-components": "^5.3.6",
+    "svelte": "^3.46.4",
     "typescript": "^4.9.3"
   },
   "devDependencies": {

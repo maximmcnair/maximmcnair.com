@@ -17,6 +17,12 @@ const { title, desc } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={desc || ""} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script
+      defer
+      data-domain="maximmcnair.com"
+      src="https://plausible.io/js/script.js"
+    ></script>
   </head>
   <body>
     <slot />
