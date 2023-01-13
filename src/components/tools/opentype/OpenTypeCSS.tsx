@@ -138,7 +138,7 @@ p, .type-para {
 }
 
 small, .type-small {
-  font-size: font-size: var(--typesize-small);
+  font-size: var(--typesize-small);
 }
 
 /* Example use in custom component */

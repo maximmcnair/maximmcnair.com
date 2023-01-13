@@ -26,13 +26,17 @@ const nonDraftArticles = articles
   <main>
     <section class="intro">
       <p class="intro-desc">
-        A product engineer and designer. Interested in the <em
-          >intersection of math, comp sci and design.</em
+        A product engineer and designer, interested in the <em
+          >intersection of math, tech and design.</em
         >
       </p>
 
       <p class="intro-desc hide">
-        I'm currently taking part in the <em>a tool a day for 15 days</em> challenge.
+        Creator of <a href="https://www.copypastemathjax.com/" target="_blank"
+          >copypastemathjax.com</a
+        > and <a href="https://www.opentypecollective.com/" target="_blank"
+          >Opentypecollective.com</a
+        >
       </p>
 
       <div id="canvas-art"></div>
@@ -167,9 +171,7 @@ const nonDraftArticles = articles
           ({ frontmatter: { title, tags, publishedOn }, url }) => (
             <a class="article" href={url}>
               <h3 class="article-title">{title}</h3>
-              <strong class="article-desc">
-                {publishedOn}
-              </strong>
+              <strong class="article-desc">{publishedOn}</strong>
             </a>
           )
         )
@@ -217,6 +219,11 @@ const nonDraftArticles = articles
     max-width: 600px;
   }
 
+  .intro-desc a {
+    font-weight: 500;
+    font-style: italic;
+  }
+
   @media (min-width: 550px) {
     .intro-desc {
       font-size: var(--typesize-h3);
@@ -236,6 +243,7 @@ const nonDraftArticles = articles
 
   .social-icons a {
     margin: 4px;
+    margin-right: 8px;
   }
 
   .social-icons a:hover {
