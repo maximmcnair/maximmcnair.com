@@ -1,0 +1,89 @@
+/* Epilogue */
+@font-face {
+  src: url('/Epilogue.woff2') format('woff2');
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  /* Typography */
+  --typeface-body: 'Epilogue';
+
+	/* Colors */
+	--color-white: #f7f7f7;
+	--color-grey: #4d4d4d;
+	--color-grey-light: #797979;
+	--color-grey-lighter: #cecece;
+	--color-grey-dark: #1d1f20;
+	--color-grey-darker: #131515;
+	--color-black: #0d0d0d;
+	--color-gold: #d09f69;
+  --color-blue: #332bcc;
+
+  /* Z Index */
+  --z-header: 999;
+  --z-background: 777;
+  --z-header: 999;
+  --z-draggable: 888;
+  --z-drawing: 666;;
+}
+
+/* @media (prefers-color-scheme: dark) { */
+/*   :root { */
+/*   } */
+/* } */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--color-blue);
+}
+
+body {
+  font-family: var(--typeface-body);
+  color: rgb(var(--foreground-rgb));
+}
+
+::selection {
+  color: var(--color-blue);
+  background-color: var(--color-black);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+.react-draggable {
+  cursor: grab;
+}
+.react-draggable-dragging {
+  cursor: grabbing;
+}
+
+.react-draggable .content {
+  transition: transform 0.3s;
+  transform: scale(1.1);
+}
+.react-draggable-dragging .content {
+  transform: scale(1);
+}
