@@ -49,6 +49,18 @@
   user-select: none;
 }
 
+.icon {
+  transition: color .3s;
+  width: 18px;
+  position: absolute;
+  top: 8px;
+  right: 7px;
+}
+
+.icon:hover {
+  color: white;
+}
+
 .close,
 .minimise,
 .maximise {
@@ -78,6 +90,7 @@
   color: grey;
   transition: all .3s;
   cursor: pointer;
+  transition: color .3s;
 }
 
 .link:hover {
