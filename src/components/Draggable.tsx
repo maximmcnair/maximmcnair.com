@@ -20,7 +20,7 @@ const DragComp: React.FC<Props> = ({ children, x: defaultX, y: defaultY, title, 
               <div className={styles.minimise} />
               <div className={styles.maximise} />
               {href ? 
-                <a href={href} target="_blank" className={styles.link}>{title}</a>:
+                <a href={href} target="_blank" rel="noreferrer" className={styles.link}>{title}</a>:
                 <span>{title}</span>
               }
             </header>
@@ -36,7 +36,7 @@ const DragComp: React.FC<Props> = ({ children, x: defaultX, y: defaultY, title, 
             <div className={styles.minimise} />
             <div className={styles.maximise} />
             {href ? 
-              <a href={href} target="_blank" className={styles.link}>{title}</a>:
+              <a href={href} target="_blank" rel="noreferrer" className={styles.link}>{title}</a>:
               <span>{title}</span>
             }
           </header>

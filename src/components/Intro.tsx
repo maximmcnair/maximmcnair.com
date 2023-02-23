@@ -16,7 +16,7 @@ interface Work {
 {/* <Background /> */}
 
 export default function Intro(){
-  const [work, setWork] = useState<Work[]>([
+  const [work] = useState<Work[]>([
     { id : 0,
       title: 'useCables.com',
       href: "https://www.usecables.com/",
@@ -53,7 +53,7 @@ export default function Intro(){
     <section className={styles.introWrapper}>
       <section className={styles.intro}>
         <span className={styles.name}>Maxim McNair</span>
-        <h2 className={styles.title}>I'm a product engineer and designer, focused on{' '}
+        <h2 className={styles.title}>{'I\'m a product engineer and designer, focused on '}
           <span className={styles.titleHighlight}>building creative tools for the web.</span>
         </h2>
         <section className={styles.socialIcons}>

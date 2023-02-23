@@ -14,12 +14,15 @@ const Drawing: React.FC = () => {
   const [points, setPoints] = useState([]);
 
   function handlePointerDown(e: React.MouseEvent) {
+    // @ts-ignore
     e.target.setPointerCapture(e.pointerId);
+    // @ts-ignore
     setPoints([[e.pageX, e.pageY, e.pressure]]);
   }
 
   function handlePointerMove(e: React.MouseEvent) {
     if (e.buttons !== 1) return;
+    // @ts-ignore
     setPoints([...points, [e.pageX, e.pageY, e.pressure]]);
   }
 

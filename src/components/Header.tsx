@@ -1,10 +1,11 @@
-import styles from './Header.module.css'
+import Link from 'next/link';
+import styles from './Header.module.css';
 
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.content}>
-        <a href="/" className={styles.title}>Maxim McNair</a>
+        <Link href="/#" className={styles.title}>Maxim McNair</Link>
         <nav className={styles.links}>
           <a href="#about">About</a>
           <a href="#work">Work</a>
